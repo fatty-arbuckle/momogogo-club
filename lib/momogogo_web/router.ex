@@ -1,5 +1,6 @@
 defmodule MomogogoWeb.Router do
   use MomogogoWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -10,8 +11,18 @@ defmodule MomogogoWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated, error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/" do
+    pipe_through :browser
+
+    pow_routes()
   end
 
   scope "/", MomogogoWeb do
@@ -19,13 +30,15 @@ defmodule MomogogoWeb.Router do
 
     live "/", PageLive, :index
 
+  end
+
+  scope "/", MomogogoWeb do
+    pipe_through [:browser, :protected]
     live "/posts", PostLive.Index, :index
     live "/posts/new", PostLive.Index, :new
     live "/posts/:id/edit", PostLive.Index, :edit
-
     live "/posts/:id", PostLive.Show, :show
     live "/posts/:id/show/edit", PostLive.Show, :edit
-
   end
 
   # Other scopes may use custom stacks.

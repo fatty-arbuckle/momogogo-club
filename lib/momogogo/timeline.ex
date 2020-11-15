@@ -108,7 +108,8 @@ defmodule Momogogo.Timeline do
     Phoenix.PubSub.subscribe(Momogogo.PubSub, "posts")
   end
 
-  defp broadcast({:error, _reason}, error, _event), do: error
+  # TODO What does Repo.update fail with?
+  # defp broadcast({:error, _reason}, error, _event), do: error
   defp broadcast({:ok, post}, event) do
     Phoenix.PubSub.broadcast(Momogogo.PubSub, "posts", {event, post})
     {:ok, post}
