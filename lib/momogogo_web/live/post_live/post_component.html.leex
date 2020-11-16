@@ -1,0 +1,35 @@
+<div class="card m-3">
+  <div class="card-content">
+    <div class="columns is-vcentered">
+      <div class="column is-one-quarter">
+        <p class="title has-text-centered">
+          <time datetime="<%= @post.date %>"><%= @post.date %></time>
+        </p>
+      </div>
+      <div class="column is-1">
+        <span class="icon has-text-info is-size-3 has-text-centered">
+          <i class="fas <%= @icon %>"></i>
+        </span>
+      </div>
+      <div class="column">
+        <div class="">
+          <p class="title is-4"><%= @post.activity %></p>
+          <p class="subtitle is-6"><%= @post.duration %> minutes</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <p class="title is-4 has-text-right"><%= @post.steps %></p>
+            <!-- <figure class="image is-48x48">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure> -->
+      </div>
+
+      <div class="column is-1 has-text-right">
+        <span class="level-item"><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
+        <span class="level-item"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
+      </div>
+
+    </div> <!-- columns -->
+  </div>
+</div>

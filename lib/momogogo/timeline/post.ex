@@ -27,7 +27,7 @@ defmodule Momogogo.Timeline.Post do
   defp update_steps(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, data: data, changes: changes} ->
-        put_change(changeset, :steps, Momogogo.Steps.convert(get_activity(data, changes), get_duration(data, changes)))
+        put_change(changeset, :steps, Momogogo.Activity.convert(get_activity(data, changes), get_duration(data, changes)))
       _ ->
         changeset
     end
