@@ -10,7 +10,9 @@ defmodule MomogogoWeb.PostLive.FormComponent do
     {:ok,
      socket
      |> assign(assigns)
-     |> assign(:changeset, changeset)}
+     |> assign(:changeset, changeset)
+     |> assign(:activities, Momogogo.Steps.activities())
+   }
   end
 
   @impl true

@@ -1,0 +1,108 @@
+defmodule Momogogo.Steps do
+
+  @conversion_table %{
+    "Aerobics Class" => 145,
+    "Archery" => 102,
+    "Backpacking, uphill" => 242,
+    "Badminton" => 136,
+    "Baseball" => 111,
+    "Basketball, game" => 178,
+    "Basketball, recreational" => 133,
+    "Bicycling, 10 mph easy" => 133,
+    "Bicycling, 13 mph moderate" => 178,
+    "Bicycling, 15 mph vigorous" => 222,
+    "Billiards/pool" => 77,
+    "Bowling" => 87,
+    "Boxing, noncompetitive" => 131,
+    "Boxing, competitive" => 222,
+    "Calisthenics" => 106,
+    "Canoeing" => 106,
+    "Chopping Wood" => 133,
+    "Circuit training, general" => 178,
+    "Cleaning house" => 78,
+    "Climbing, rock or mountain" => 273,
+    "Dancing, aerobic" => 133,
+    "Dancing, general" => 100,
+    "Elliptical machine" => 249,
+    "Fencing" => 133,
+    "Fishing, sitting" => 91,
+    "Fitness class –low impact" => 152,
+    "Fitness class –high impact" => 212,
+    "Football" => 189,
+    "Frisbee" => 67,
+    "Gardening" => 131,
+    "Golf, carrying clubs" => 122,
+    "Golf, cart" => 78,
+    "Gymnastics" => 89,
+    "Handball" => 267,
+    "Hiking, general" => 172,
+    "Hiking, uphill" => 212,
+    "Hockey" => 178,
+    "Horseback riding, general" => 102,
+    "Ice skating" => 203,
+    "Jogging" => 156,
+    "Jumping rope, moderate" => 244,
+    "Jumping rope, slow" => 178,
+    "Kayaking" => 152,
+    "Line dancing" => 139,
+    "Martial Arts" => 222,
+    "Miniature golf" => 91,
+    "Mowing (push mower)" => 160,
+    "Mopping" => 101,
+    "Painting" => 100,
+    "Pilates" => 99,
+    "Ping Pong" => 121,
+    "Punching bag" => 182,
+    "Racquetball, moderate" => 156,
+    "Rock climbing" => 244,
+    "Rollerblading/skating" => 156,
+    "Rowing machine, moderate" => 111,
+    "Rowing machine, vigorous" => 189,
+    "Rugby" => 303,
+    "Running, 8 minute mile" => 278,
+    "Running, 10 minute mile" => 222,
+    "Running, 12 minute mile" => 178,
+    "Scuba diving" => 212,
+    "Shoveling snow" => 133,
+    "Skiing, cross-country" => 200,
+    "Skiing, downhill" => 133,
+    "Sledding" => 212,
+    "Snowshoeing" => 178,
+    "Soccer, Recreational" => 156,
+    "Softball" => 152,
+    "Spinning class" => 240,
+    "Stair climbing, leisurely" => 90,
+    "Stair climbing, vigorous" => 267,
+    "Stretching" => 76,
+    "Swimming, leisurely" => 133,
+    "Swimming laps, moderate" => 212,
+    "Swimming laps, vigorous" => 303,
+    "Tai chi" => 121,
+    "Tennis, singles" => 178,
+    "Tennis, doubles" => 133,
+    "Vacuuming" => 87,
+    "Volleyball" => 89,
+    "Walking, 2 mph" => 76,
+    "Walking,3 mph" => 100,
+    "Walking, 4.0 mph" => 152,
+    "Washing car" => 100,
+    "Water aerobics" => 89,
+    "Weight lifting" => 133,
+    "Yard work" => 111,
+    "Yoga" => 89
+  }
+
+
+  def convert(activity, duration_in_minutes) do
+    case Map.get(@conversion_table, activity) do
+      nil -> nil
+      rate -> rate * duration_in_minutes
+    end
+  end
+
+  def activities() do
+    Map.keys(@conversion_table)
+    |> Enum.sort
+  end
+
+end
