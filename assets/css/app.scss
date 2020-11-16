@@ -1,6 +1,36 @@
 /* This file is for your main application css. */
-@import "./phoenix.css";
+@import "./bulma.sass";
 @import "../node_modules/nprogress/nprogress.css";
+
+// .has-bg-img { background: url('/images/barbieworkoutcenter.jpg')center center; background-size:cover; }
+
+body, html {
+  height: 100%;
+}
+
+.has-bg-img  {
+  /* The image used */
+  background-image: url("/images/barbieworkoutcenter.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.has-shade {
+  background: rgb(255,213,69);
+  background: radial-gradient(circle, rgba(255,213,69,1) 0%, rgba(255,213,69,0) 100%);
+  // background: rgba(255, 213, 69, 0.7)
+}
+
+
+
+
+
 
 /* LiveView specific classes for your customizations */
 .phx-no-feedback.invalid-feedback,
