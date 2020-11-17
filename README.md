@@ -2,13 +2,9 @@
 
 ## Todo
 
-* link/redirect from sign in to posts
-* how to get user info in a Live page?
 * secure db connection
 * test deployment
-* Limit editing to user's own posts
 * Toggle showing all vs own
-* Selection drop down
 * Pretty leaf rating of activity
 * Show user's activity by week/month/etc
 * Show all activity by week/month/etc by user

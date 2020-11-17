@@ -29,7 +29,8 @@ config :phoenix, :json_library, Jason
 config :momogogo, :pow,
   user: Momogogo.Users.User,
   repo: Momogogo.Repo,
-  web_module: MomogogoWeb
+  web_module: MomogogoWeb,
+  routes_backend: MomogogoWeb.Pow.Routes
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
