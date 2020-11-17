@@ -9,6 +9,7 @@ defmodule MomogogoWeb.Router do
     plug :put_root_layout, {MomogogoWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :put_current_user
   end
 
   pipeline :protected do
@@ -61,4 +62,16 @@ defmodule MomogogoWeb.Router do
       live_dashboard "/dashboard", metrics: MomogogoWeb.Telemetry
     end
   end
+
+  defp put_current_user(conn, _headers) do
+    case Pow.Plug.current_user(conn) do
+      %{ id: id, email: email } ->
+        conn
+        |> put_session(:current_user_id, id)
+        |> put_session(:current_user_email, email)
+      _ ->
+        conn
+    end
+  end
+
 end

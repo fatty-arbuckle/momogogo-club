@@ -1,5 +1,7 @@
 <h2><%= @title %></h2>
 
+<p class="is-size-1"><%= @current_user_id %></p>
+
 <%= f = form_for @changeset, "#",
   id: "post-form",
   phx_target: @myself,

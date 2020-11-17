@@ -5,11 +5,16 @@ defmodule MomogogoWeb.PostLive.Index do
   alias Momogogo.Timeline.Post
 
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(_params, %{ "current_user_id" => current_user_id, "current_user_email" => current_user_email } = session, socket) do
+
     if connected?(socket), do: Timeline.subscribe
+
     {
       :ok,
-      assign(socket, :posts, list_posts()),
+      socket
+      |> assign(:posts, list_posts(Integer.to_string(current_user_id)))
+      |> assign(:current_user_id, current_user_id)
+      |> assign(:current_user_email, current_user_email),
       temporary_assigns: [posts: []]
     }
   end
@@ -42,7 +47,7 @@ defmodule MomogogoWeb.PostLive.Index do
     post = Timeline.get_post!(id)
     {:ok, _} = Timeline.delete_post(post)
 
-    {:noreply, assign(socket, :posts, list_posts())}
+    {:noreply, assign(socket, :posts, list_posts("dummy"))}
   end
 
   @impl true
@@ -55,7 +60,7 @@ defmodule MomogogoWeb.PostLive.Index do
     {:noreply, update(socket, :posts, fn posts -> [post | posts] end)}
   end
 
-  defp list_posts do
-    Timeline.list_posts()
+  defp list_posts(user) do
+    Timeline.list_posts(user)
   end
 end

@@ -3,7 +3,7 @@ defmodule Momogogo.Timeline.Post do
   import Ecto.Changeset
 
   schema "posts" do
-    field :username, :string, default: "dummy"
+    field :username, :string
     field :date, :string, default: (DateTime.utc_now
       |> DateTime.to_date
       |> Date.to_iso8601)
@@ -18,8 +18,8 @@ defmodule Momogogo.Timeline.Post do
   def changeset(post, attrs) do
     attrs = update_steps(attrs)
     post
-    |> cast(attrs, [:date, :activity, :duration])
-    |> validate_required([:date, :activity, :duration])
+    |> cast(attrs, [:username, :date, :activity, :duration])
+    |> validate_required([:username, :date, :activity, :duration])
     |> validate_number(:duration, greater_than: 0)
     |> update_steps()
   end

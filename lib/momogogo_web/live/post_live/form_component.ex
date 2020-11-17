@@ -43,6 +43,7 @@ defmodule MomogogoWeb.PostLive.FormComponent do
   end
 
   defp save_post(socket, :new, post_params) do
+    post_params = Map.put(post_params, "username", Integer.to_string(Map.get(socket.assigns, :current_user_id)))
     case Timeline.create_post(post_params) do
       {:ok, _post} ->
         {:noreply,

@@ -17,8 +17,12 @@ defmodule Momogogo.Timeline do
       [%Post{}, ...]
 
   """
-  def list_posts do
-    Repo.all(from p in Post, order_by: [desc: p.id])
+  def list_posts(user) do
+    Repo.all(
+      from p in Post,
+      where: p.username == ^user,
+      order_by: [desc: p.date]
+    )
   end
 
   @doc """
@@ -53,7 +57,7 @@ defmodule Momogogo.Timeline do
     %Post{}
     |> Post.changeset(attrs)
     |> Repo.insert()
-    |> broadcast(:post_created)
+    # |> broadcast(:post_created)
   end
 
   @doc """
@@ -72,7 +76,7 @@ defmodule Momogogo.Timeline do
     post
     |> Post.changeset(attrs)
     |> Repo.update()
-    |> broadcast(:post_updated)
+    # |> broadcast(:post_updated)
   end
 
   @doc """
@@ -108,8 +112,7 @@ defmodule Momogogo.Timeline do
     Phoenix.PubSub.subscribe(Momogogo.PubSub, "posts")
   end
 
-  # TODO What does Repo.update fail with?
-  # defp broadcast({:error, _reason}, error, _event), do: error
+  defp broadcast({:error, _reason} = error, _event), do: error
   defp broadcast({:ok, post}, event) do
     Phoenix.PubSub.broadcast(Momogogo.PubSub, "posts", {event, post})
     {:ok, post}
