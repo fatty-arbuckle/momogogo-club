@@ -9,7 +9,7 @@
     <div class="field">
       <%= label f, :date %>
       <div class="control">
-        <%= text_input f, :date, class: "input has-width-half" %>
+        <%= date_input f, :date, class: "input has-width-half" %>
       </div>
       <%= error_tag f, :date %>
     </div>
@@ -17,13 +17,13 @@
     <div class="field">
       <%= label f, :activity %>
       <div class="control">
-        <%= select f, :activity, @activities, class: "input has-width-half" %>
+        <%= select f, :activity, @activities, prompt: "What did you do?", class: "input has-width-half" %>
       </div>
       <%= error_tag f, :activity %>
     </div>
 
     <div class="field">
-      <%= label f, :duration %>
+      <%= label f, :duration, "Minutes Spent" %>
       <div class="control">
         <%= text_input f, :duration, class: "input has-width-half" %>
       </div>
