@@ -1,5 +1,21 @@
 # Momogogo
 
+## Manually running a release
+
+```
+docker run --name stub-postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 --rm postgres
+```
+
+```
+MIX_ENV=prod mix deps.get
+MIX_ENV=prod mix deps.compile
+MIX_ENV=prod mix release
+DATABASE_URL=ecto://postgres:postgres@localhost/momogogo_dev SECRET_KEY_BASE=$(mix phx.gen.secret) ./_build/prod/rel/momogogo/bin/momogogo eval "Momogogo.Release.migrate"
+DATABASE_URL=ecto://postgres:postgres@localhost/momogogo_dev SECRET_KEY_BASE=$(mix phx.gen.secret) ./_build/prod/rel/momogogo/bin/momogogo start
+```
+
+## Running a release via Docker
+
 ## Todo
 
 * secure db connection

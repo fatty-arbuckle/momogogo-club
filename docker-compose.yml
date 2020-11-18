@@ -1,0 +1,43 @@
+version: "3.3"
+
+services:
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_PORT=5432
+
+  momogogo-db-init:
+    image: momogogo:latest
+    environment:
+      - SECRET_KEY_BASE=zV3+z2D8gYkbvHjVHNWd2Rg0xM46J7IiteTn8Y/tTyV4uhWaXNO+E4znQZ4kGT/F
+      - DATABASE_URL=ecto://postgres:postgres@db/momogogo_dev
+    command: /app/bin/momogogo eval "Momogogo.Release.migrate"
+    depends_on:
+      - db
+
+  momogogo:
+    image: momogogo:latest
+    environment:
+      - SECRET_KEY_BASE=zV3+z2D8gYkbvHjVHNWd2Rg0xM46J7IiteTn8Y/tTyV4uhWaXNO+E4znQZ4kGT/F
+      - DATABASE_URL=ecto://postgres:postgres@db/momogogo_dev
+      - MOMOGOGO_SSL_KEY_PATH=/ssl/key.pem
+      - MOMOGOGO_SSL_CERT_PATH=/ssl/cert.pem
+    volumes:
+      - nginx:/ssl
+    depends_on:
+      - momogogo-db-init
+
+  reverse-proxy:
+    image: nginx
+    volumes:
+      - nginx:/etc/nginx/conf.d
+    ports:
+      - 443:443
+    command: [nginx-debug, '-g', 'daemon off']
+
+volumes:
+  nginx:

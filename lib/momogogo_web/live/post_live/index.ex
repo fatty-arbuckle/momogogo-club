@@ -5,7 +5,7 @@ defmodule MomogogoWeb.PostLive.Index do
   alias Momogogo.Timeline.Post
 
   @impl true
-  def mount(_params, %{ "current_user_id" => current_user_id, "current_user_email" => current_user_email } = session, socket) do
+  def mount(_params, %{ "current_user_id" => current_user_id, "current_user_email" => current_user_email } = _session, socket) do
 
     if connected?(socket), do: Timeline.subscribe
 
