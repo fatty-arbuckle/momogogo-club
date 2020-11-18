@@ -27,7 +27,13 @@ body, html {
   // background: rgba(255, 213, 69, 0.7)
 }
 
+.has-normal-items {
+  align-items: normal !important;
+}
 
+.has-width-half {
+  width: 50%;
+}
 
 
 

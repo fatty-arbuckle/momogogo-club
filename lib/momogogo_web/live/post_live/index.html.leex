@@ -1,29 +1,25 @@
-<div class="hero">
+<p class="is-size-1 has-text-centered">Timeline</p>
 
-  <p class="is-size-1 has-text-centered">Timeline</p>
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, MomogogoWeb.PostLive.FormComponent,
+    id: @post.id || :new,
+    title: @page_title,
+    action: @live_action,
+    post: @post,
+    current_user_id: @current_user_id,
+    return_to: Routes.post_index_path(@socket, :index) %>
+<% end %>
 
-  <%= if @live_action in [:new, :edit] do %>
-    <%= live_modal @socket, MomogogoWeb.PostLive.FormComponent,
-      id: @post.id || :new,
-      title: @page_title,
-      action: @live_action,
-      post: @post,
-      current_user_id: @current_user_id,
-      return_to: Routes.post_index_path(@socket, :index) %>
-  <% end %>
-
-  <%= if Enum.count(@posts) == 0 do %>
-    <p class="is-size-3 has-text-centered">You're at the beginning of your timeline, make your first post!</p>
-  <% else %>
-    <div id="posts" phx-update="prepend">
-      <%= for post <- @posts do %>
-        <%= live_component @socket, MomogogoWeb.PostLive.PostComponent, id: post.id, post: post %>
-        <% end %>
-    </div>
-  <% end %>
-
-  <div class="has-text-centered">
-    <div class="button is-text"><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) %></span>
+<%= if Enum.count(@posts) == 0 do %>
+  <p class="is-size-3 has-text-centered">You're at the beginning of your timeline, make your first post!</p>
+<% else %>
+  <div id="posts" phx-update="prepend">
+    <%= for post <- @posts do %>
+      <%= live_component @socket, MomogogoWeb.PostLive.PostComponent, id: post.id, post: post %>
+      <% end %>
   </div>
+<% end %>
 
+<div class="has-text-centered">
+  <div class="button is-text"><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) %></span>
 </div>

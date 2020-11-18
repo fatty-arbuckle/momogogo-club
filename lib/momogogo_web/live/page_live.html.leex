@@ -1,18 +1,19 @@
 <section class="hero is-fullheight">
-  <div class="hero-body">
+  <div class="hero-header has-text-centered">
+    <a href="/">
+      <img src="/images/momogogo_logo-256.png" alt="Momogogo Logo">
+    </a>
+  </div>
+  <div class="hero-body has-normal-items">
     <div class="container">
-      <div class="has-text-centered">
-        <a href="/">
-          <img src="/images/momogogo_logo-512.png" alt="Momogogo Logo">
-        </a>
-      </div>
 
       <div class="has-text-centered">
         <div class="button is-text is-large"><%= link "Sign In", to: Routes.pow_session_path(@socket, :new) %></div>
-      <div>
+      </div>
       <div class="has-text-centered">
         <div class="button is-text is-large"><%= link "Register", to: Routes.pow_registration_path(@socket, :new) %></div>
       </div>
+
     </div>
   </div>
 </section>

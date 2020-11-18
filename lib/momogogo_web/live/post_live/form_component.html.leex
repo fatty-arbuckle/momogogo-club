@@ -1,24 +1,36 @@
-<h2><%= @title %></h2>
+<div class="hero has-text-centered">
 
-<p class="is-size-1"><%= @current_user_id %></p>
+  <%= f = form_for @changeset, "#",
+    id: "post-form",
+    phx_target: @myself,
+    phx_change: "validate",
+    phx_submit: "save" %>
 
-<%= f = form_for @changeset, "#",
-  id: "post-form",
-  phx_target: @myself,
-  phx_change: "validate",
-  phx_submit: "save" %>
+    <div class="field">
+      <%= label f, :date %>
+      <div class="control">
+        <%= text_input f, :date, class: "input has-width-half" %>
+      </div>
+      <%= error_tag f, :date %>
+    </div>
 
-  <%= label f, :date %>
-  <%= text_input f, :date %>
-  <%= error_tag f, :date %>
+    <div class="field">
+      <%= label f, :activity %>
+      <div class="control">
+        <%= select f, :activity, @activities, class: "input has-width-half" %>
+      </div>
+      <%= error_tag f, :activity %>
+    </div>
 
-  <%= label f, :activity %>
-  <%= select f, :activity, @activities %>
-  <%= error_tag f, :activity %>
+    <div class="field">
+      <%= label f, :duration %>
+      <div class="control">
+        <%= text_input f, :duration, class: "input has-width-half" %>
+      </div>
+      <%= error_tag f, :duration %>
+    </div>
 
-  <%= label f, :duration %>
-  <%= text_input f, :duration %>
-  <%= error_tag f, :duration %>
+    <%= submit "Save", phx_disable_with: "Saving..." %>
+  </form>
 
-  <%= submit "Save", phx_disable_with: "Saving..." %>
-</form>
+</div>
