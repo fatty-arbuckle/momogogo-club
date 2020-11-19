@@ -20,7 +20,7 @@
 
       <div class="column">
         <p class="title has-text-right">
-          <span class="icon has-text-success is-size-3 has-text-centered tooltip">
+          <span class="icon has-text-success is-size-1 has-text-centered tooltip">
             <i  data-tooltip="<%= @post.steps %>" class="fas <%= render_steps(@post.steps) %>"></i>
             <span class="tooltiptext has-text-info has-background-white is-size-6"><%= @post.steps %></span>
           </span>
@@ -29,8 +29,8 @@
       </div>
 
       <div class="column is-1 has-text-right">
-        <span class="level-item"><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
-        <span class="level-item"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
+        <span class="level-item is-size-7"><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
+        <span class="level-item is-size-7"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
       </div>
 
     </div> <!-- columns -->
