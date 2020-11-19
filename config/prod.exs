@@ -58,7 +58,9 @@ config :momogogo, MomogogoWeb.Endpoint,
   http: [port: {:system, "PORT"}], # Possibly not needed, but doesn't hurt
   url: [host: "${APP_NAME}.gigalixirapp.com", port: 443],
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
-  server: true
+  server: true,
+  check_origin: ["https://buoyant-required-caecilian.gigalixirapp.com", "//buoyant-required-caecilian.gigalixirapp.com"]
+
 
 config :momogogo, Momogogo.Repo,
   adapter: Ecto.Adapters.Postgres,
