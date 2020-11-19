@@ -15,6 +15,6 @@ defmodule MomogogoWeb.PostLive.PostComponent do
   def render_steps(steps) when steps >  6_000, do: "fa-smile"
   def render_steps(steps) when steps >  4_000, do: "fa-meh"
   def render_steps(steps) when steps >  2_000, do: "fa-frown"
-  def render_steps(steps), do: "fa-meh-rolling-eyes"
+  def render_steps(_steps), do: "fa-meh-rolling-eyes"
 
 end

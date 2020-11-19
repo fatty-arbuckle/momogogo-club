@@ -5,9 +5,30 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=momogogo
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_PORT=5432
     ports:
       - 5432:5432
+
+
+  # db:
+  #   image: bitnami/postgresql
+  #   # command: -c ssl=on -c ssl_cert_file=/var/lib/postgresql/server.crt -c ssl_key_file=/var/lib/postgresql/server.key
+  #   environment:
+  #     - POSTGRES_DB=momogogo
+  #     - POSTGRES_MODE=primary
+  #     - POSTGRES_PRIMARY_PORT=5432
+  #     - POSTGRES_PRIMARY_USER=postgres
+  #     - POSTGRES_PRIMARY_PASSWORD=does
+  #     - POSTGRES_PASSWORD=not
+  #     - POSTGRES_ROOT_PASSWORD=matter
+  #     - POSTGRES_USER=momogogo
+  #     - POSTGRESQL_ENABLE_TLS=yes
+  #     - POSTGRESQL_TLS_CERT_FILE=/opt/bitnami/postgresql/certs/server.crt
+  #     - POSTGRESQL_TLS_KEY_FILE=/opt/bitnami/postgresql/certs/server.key
+  #   volumes:
+  #     # - ./postgres/pgconf:/var/lib/postgresql/
+  #     - ./postgres/pgconf/certs:/opt/bitnami/postgresql/certs
+  #     # - ./postgres/pgconf/certs:/nope/certs
