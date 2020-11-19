@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :momogogo, MomogogoWeb.Endpoint,
-  url: [host: "momogogo.xyz", port: 80],
+  url: [host: "localhost", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -59,7 +59,9 @@ config :momogogo, MomogogoWeb.Endpoint,
   url: [host: "${APP_NAME}.gigalixirapp.com", port: 443],
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   server: true,
-  check_origin: ["https://buoyant-required-caecilian.gigalixirapp.com", "//buoyant-required-caecilian.gigalixirapp.com"]
+  check_origin: ["//*.gigalixirapp.com"],
+  cache_static_manifest: "priv/static/cache_manifest.json"
+
 
 
 config :momogogo, Momogogo.Repo,
