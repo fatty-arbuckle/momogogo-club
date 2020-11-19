@@ -20,7 +20,7 @@ defmodule Momogogo.MixProject do
   def application do
     [
       mod: {Momogogo.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ssl]
     ]
   end
 
