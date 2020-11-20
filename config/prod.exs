@@ -56,10 +56,10 @@ import_config "prod.secret.exs"
 
 config :momogogo, MomogogoWeb.Endpoint,
   http: [port: {:system, "PORT"}], # Possibly not needed, but doesn't hurt
-  url: [host: "buoyant-required-caecilian.gigalixirapp.com", port: 443],
+  url: [host: "momogogo-club.gigalixirapp.com", port: 443],
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
   server: true,
-  check_origin: ["//*.gigalixirapp.com"],
+  check_origin: ["//*.gigalixirapp.com", "//momogogo.club"],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 
