@@ -35,6 +35,7 @@ defmodule MomogogoWeb.Router do
 
   scope "/", MomogogoWeb do
     pipe_through [:browser, :protected]
+    live "/dashboard", DashboardLive, :index
     live "/posts", PostLive.Index, :index
     live "/posts/new", PostLive.Index, :new
     live "/posts/:id/edit", PostLive.Index, :edit

@@ -3,6 +3,7 @@
     <div class="container">
 
       <div class="has-text-centered">
+        <div class="button is-text is-large"><%= link "Go To Dashboard", to: Routes.dashboard_path(@socket, :index) %></div>
         <div class="button is-text is-large"><%= live_patch "New Post", to: Routes.post_index_path(@socket, :new) %></div>
       </div>
 

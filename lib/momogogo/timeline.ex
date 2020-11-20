@@ -8,6 +8,12 @@ defmodule Momogogo.Timeline do
 
   alias Momogogo.Timeline.Post
 
+  def list_users do
+    Repo.all(
+      from u in Momogogo.Users.User
+    )
+  end
+
   @doc """
   Returns the list of posts.
 
@@ -17,6 +23,12 @@ defmodule Momogogo.Timeline do
       [%Post{}, ...]
 
   """
+  def list_posts(:all) do
+    Repo.all(
+      from p in Post,
+      order_by: [desc: p.date]
+    )
+  end
   def list_posts(user) do
     Repo.all(
       from p in Post,
@@ -24,6 +36,7 @@ defmodule Momogogo.Timeline do
       order_by: [desc: p.date]
     )
   end
+
 
   @doc """
   Gets a single post.

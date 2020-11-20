@@ -1,6 +1,6 @@
 <section class="hero is-fullheight">
   <div class="hero-header has-text-centered">
-    <a href="/">
+    <a href="/dashboard">
       <img src="/images/momogogo_logo-256.png" alt="Momogogo Logo">
     </a>
   </div>

@@ -1,11 +1,19 @@
 <section class="hero is-fullheight">
   <div class="hero-header has-text-centered">
-    <a href="/">
+    <a href="/dashboard">
       <img src="/images/momogogo_logo-256.png" alt="Momogogo Logo">
     </a>
   </div>
   <div class="hero-body has-normal-items">
     <div class="container">
+
+      <div class="has-text-centered">
+        <div class="button is-text is-large"><%= link "Dashboard", to: Routes.dashboard_path(@socket, :index) %></div>
+      </div>
+      <div class="has-text-centered">
+        <div class="button is-text is-large"><%= link "Timeline", to: Routes.post_index_path(@socket, :index) %></div>
+      </div>
+
 
       <div class="has-text-centered">
         <div class="button is-text is-large"><%= link "Sign In", to: Routes.pow_session_path(@socket, :new) %></div>
