@@ -14,7 +14,11 @@
       <div class="column">
         <div class="">
           <p class="title is-4"><%= @post.activity %></p>
-          <p class="subtitle is-6"><%= @post.duration %> minutes</p>
+          <%= if @post.activity == Momogogo.Activity.custom() do %>
+            <p class="subtitle is-6"><%= @post.duration %> steps</p>
+          <% else %>
+            <p class="subtitle is-6"><%= @post.duration %> minutes</p>
+          <% end %>
         </div>
       </div>
 

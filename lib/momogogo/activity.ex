@@ -1,5 +1,7 @@
 defmodule Momogogo.Activity do
 
+  @custom "Custom (enter steps directly)"
+
   @conversion_table %{
     "Aerobics Class" => %{ rate: 145 },
     "Archery" => %{ rate: 102 },
@@ -93,16 +95,20 @@ defmodule Momogogo.Activity do
   }
 
 
+  def convert(activity, steps) when activity == @custom, do: steps
   def convert(activity, duration_in_minutes) do
+    IO.inspect(activity, label: "ACTIVITY")
     case Map.get(@conversion_table, activity) do
       %{ rate: rate } -> rate * duration_in_minutes
-      _ -> nil
     end
   end
 
   def activities() do
-    Map.keys(@conversion_table)
-    |> Enum.sort
+    [
+      @custom |
+      (Map.keys(@conversion_table)
+      |> Enum.sort)
+    ]
   end
 
   def icon(activity) do
@@ -110,6 +116,10 @@ defmodule Momogogo.Activity do
       %{ icon: icon } -> icon
       _ -> "fa-smile"
     end
+  end
+
+  def custom do
+    @custom
   end
 
 end

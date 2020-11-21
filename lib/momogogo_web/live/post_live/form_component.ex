@@ -12,17 +12,31 @@ defmodule MomogogoWeb.PostLive.FormComponent do
      |> assign(assigns)
      |> assign(:changeset, changeset)
      |> assign(:activities, Momogogo.Activity.activities())
+     |> assign(:value_label, "Minutes Spent")
    }
   end
 
   @impl true
   def handle_event("validate", %{"post" => post_params}, socket) do
+    custom = Momogogo.Activity.custom()
+    value_label = case post_params do
+      %{ "activity" => ^custom } ->
+        "Steps Taken"
+      _ ->
+        "Minutes Spent"
+    end
+
     changeset =
       socket.assigns.post
       |> Timeline.change_post(post_params)
       |> Map.put(:action, :validate)
 
-    {:noreply, assign(socket, :changeset, changeset)}
+    {
+      :noreply,
+      (socket
+      |> assign(:changeset, changeset)
+      |> assign(:value_label, value_label))
+    }
   end
 
   def handle_event("save", %{"post" => post_params}, socket) do
