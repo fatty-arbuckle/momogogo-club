@@ -62,5 +62,6 @@ defmodule MomogogoWeb.PostLive.Index do
 
   defp list_posts(user) do
     Timeline.list_posts(user)
+    |> Enum.chunk_by(fn %{date: date} -> date end)
   end
 end

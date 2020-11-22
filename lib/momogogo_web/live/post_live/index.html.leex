@@ -21,10 +21,10 @@
         <%= if Enum.count(@posts) == 0 do %>
           <p class="is-size-3 has-text-centered">You're at the beginning of your timeline, make your first post!</p>
         <% else %>
-          <div id="posts" phx-update="prepend">
-            <%= for post <- @posts do %>
-              <%= live_component @socket, MomogogoWeb.PostLive.PostComponent, id: post.id, post: post %>
-              <% end %>
+          <div id="posts">
+            <%= for posts_for_date <- @posts do %>
+              <%= live_component @socket, MomogogoWeb.PostLive.DayComponent, id: Enum.at(posts_for_date, 0).date, date: Enum.at(posts_for_date, 0).date, posts: posts_for_date %>
+            <% end %>
           </div>
         <% end %>
       </div>

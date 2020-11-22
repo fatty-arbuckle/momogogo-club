@@ -1,42 +1,23 @@
-<div class="card m-3">
-  <div class="card-content">
-    <div class="columns is-vcentered">
-      <div class="column is-one-quarter">
-        <p class="title is-5 has-text-weight-light has-text-centered">
-          <time datetime="<%= @post.date %>"><%= @post.date %></time>
-        </p>
-      </div>
-      <div class="column is-1">
-        <span class="icon has-text-info is-size-3 has-text-centered">
-          <i class="fas <%= @icon %>"></i>
-        </span>
-      </div>
-      <div class="column">
-        <div class="">
-          <p class="title is-4"><%= @post.activity %></p>
-          <%= if @post.activity == Momogogo.Activity.custom() do %>
-            <p class="subtitle is-6"><%= @post.duration %> steps</p>
-          <% else %>
-            <p class="subtitle is-6"><%= @post.duration %> minutes</p>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="column">
-        <p class="title has-text-right">
-          <span class="icon has-text-success is-size-1 has-text-centered tooltip">
-            <i  data-tooltip="<%= @post.steps %>" class="fas <%= render_steps(@post.steps) %>"></i>
-            <span class="tooltiptext has-text-info has-background-white is-size-6"><%= @post.steps %></span>
-          </span>
-        </p>
-
-      </div>
-
-      <div class="column is-1 has-text-right">
-        <span class="level-item is-size-7"><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
-        <span class="level-item is-size-7"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
-      </div>
-
-    </div> <!-- columns -->
+  <div class="columns is-vcentered">
+    <div class="column has-text-centered">
+      <span class="title has-text-info is-size-3">
+        <i class="fas <%= @icon %>"></i>
+      </span>
+    </div>
+    <div class="column">
+      <span class="is-3">
+        <%= @post.activity %>
+      </span>
+    </div>
+    <div class="column">
+      <%= if @post.activity == Momogogo.Activity.custom() do %>
+        <span class="is-3"><%= Momogogo.Helper.human_number(@post.duration) %> steps</span>
+      <% else %>
+        <span class="is-3"><%= Momogogo.Helper.human_number(@post.duration) %> minutes</span>
+      <% end %>
+    </div>
+    <div class="column">
+      <span class="level-item is-size-7"><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
+      <span class="level-item is-size-7"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
+    </div>
   </div>
-</div>
