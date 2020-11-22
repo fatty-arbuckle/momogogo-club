@@ -12,10 +12,11 @@
 
 ## Todo
 
-* Adds user names
+* Configurable scale icons (as a user option)
 * Show placeholder for days with no activities
 * Dashboard filters by time (Day, Week, Month, Year)
 * Dashboard graphs for activities
+* "Success" of user edit always leaves you on edit
 * "Cancel" of user edit always takes you dashboard
 
 # Notes
@@ -30,3 +31,5 @@ https://www.phoenixframework.org/blog/build-a-real-time-twitter-clone-in-15-minu
 https://github.com/danschultzer/pow
 https://www.youtube.com/watch?v=hnD0Z0LGMIk
 https://info.crunchydata.com/blog/ssl-certificate-authentication-postgresql-docker-containers
+https://experimentingwithcode.com/customizing-pow/
+https://elixirforum.com/t/how-to-add-custom-additional-fields-to-users-table-with-pow/33849/2
