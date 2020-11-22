@@ -24,6 +24,14 @@
         </div>
 
         <div class="field">
+          <%= label f, :name %>
+          <div class="control">
+            <%= text_input f, :name, class: "input has-width-half" %>
+          </div>
+          <%= error_tag f, :name %>
+        </div>
+
+        <div class="field">
           <%= label f, :current_password %>
           <div class="control">
             <%= password_input f, :current_password, class: "input has-width-half" %>

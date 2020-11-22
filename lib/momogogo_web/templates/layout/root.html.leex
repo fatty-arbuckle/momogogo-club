@@ -32,7 +32,9 @@
             <div class="level-right">
               <div class="level-item">
                 <div class="button is-text is-large level-item">
-                    <div class="button is-text is-large"><%= link @current_user.email, to: Routes.pow_registration_path(@conn, :edit) %></div>
+                    <div class="button is-text is-large">
+                      <%= link Momogogo.Helper.email_or_name(@current_user.email, @current_user.name), to: Routes.pow_registration_path(@conn, :edit) %>
+                    </div>
                 </div>
 
                 <div class="button is-text is-large level-item">

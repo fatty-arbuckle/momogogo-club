@@ -60,11 +60,12 @@ defmodule MomogogoWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: MomogogoWeb.Telemetry
+      live_dashboard "/internal_dashboard", metrics: MomogogoWeb.Telemetry
     end
   end
 
   defp put_current_user(conn, _headers) do
+
     case Pow.Plug.current_user(conn) do
       %{ id: id, email: email } ->
         conn
