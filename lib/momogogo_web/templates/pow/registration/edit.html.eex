@@ -1,30 +1,62 @@
-<h1>Edit profile</h1>
-
-<%= form_for @changeset, @action, [as: :user], fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
-    </div>
-  <% end %>
-
-  <%= label f, :current_password %>
-  <%= password_input f, :current_password %>
-  <%= error_tag f, :current_password %>
-
-  <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-  <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-
-  <%= label f, :password %>
-  <%= password_input f, :password %>
-  <%= error_tag f, :password %>
-
-  <%= label f, :password_confirmation %>
-  <%= password_input f, :password_confirmation %>
-  <%= error_tag f, :password_confirmation %>
-
-  <div>
-    <%= submit "Update" %>
+<section class="hero is-fullheight">
+  <div class="hero-header has-text-centered">
+    <a href="/dashboard">
+      <img src="/images/momogogo_logo-256.png" alt="Momogogo Logo">
+    </a>
   </div>
-<% end %>
+  <div class="hero-body has-normal-items">
+    <div class="container has-text-centered">
 
+      <%= form_for @changeset, @action, [as: :user], fn f -> %>
+        <%= if @changeset.action do %>
+          <div class="alert alert-danger">
+            <p>Oops, something went wrong! Please check the errors below.</p>
+          </div>
+        <% end %>
+
+
+        <div class="field">
+          <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+          <div class="control">
+            <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), class: "input has-width-half" %>
+          </div>
+          <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+        </div>
+
+        <div class="field">
+          <%= label f, :current_password %>
+          <div class="control">
+            <%= password_input f, :current_password, class: "input has-width-half" %>
+          </div>
+          <%= error_tag f, :current_password %>
+        </div>
+
+        <div class="field">
+          <%= label f, :password %>
+          <div class="control">
+            <%= password_input f, :password, class: "input has-width-half" %>
+          </div>
+          <%= error_tag f, :password %>
+        </div>
+
+        <div class="field">
+          <%= label f, :password_confirmation %>
+          <div class="control">
+            <%= password_input f, :password_confirmation, class: "input has-width-half" %>
+          </div>
+          <%= error_tag f, :password_confirmation %>
+        </div>
+
+        <div class="has-text-centered">
+          <%= submit "Update", class: "button is-text is-large" %>
+        </div>
+
+        <div class="has-text-centered">
+          <%= link "Cancel", to: Routes.dashboard_path(@conn, :index), class: "button is-text is-large" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</section>

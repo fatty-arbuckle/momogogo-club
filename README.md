@@ -12,9 +12,11 @@
 
 ## Todo
 
+* Adds user names
 * Show placeholder for days with no activities
 * Dashboard filters by time (Day, Week, Month, Year)
 * Dashboard graphs for activities
+* "Cancel" of user edit always takes you dashboard
 
 # Notes
 
