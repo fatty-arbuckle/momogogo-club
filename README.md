@@ -1,36 +1,25 @@
 # Momogogo
 
-## Manually running a release
+## Running locally
 
-```
-docker run --name stub-postgres -e POSTGRES_USERNAME=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 --rm postgres
-```
-
-```
-MIX_ENV=prod mix deps.get
-MIX_ENV=prod mix deps.compile
-MIX_ENV=prod mix release
-DATABASE_URL=ecto://postgres:postgres@localhost/momogogo_dev SECRET_KEY_BASE=$(mix phx.gen.secret) ./_build/prod/rel/momogogo/bin/momogogo eval "Momogogo.Release.migrate"
-DATABASE_URL=ecto://postgres:postgres@localhost/momogogo_dev SECRET_KEY_BASE=$(mix phx.gen.secret) ./_build/prod/rel/momogogo/bin/momogogo start
-```
-
-## Running a release via Docker
+1. Get the dependencies, `mix deps.get`
+2. Compile the code, `mix compile`
+3. Start the database, `docker-compose -f docker-compose-dev.yml up`
+4. Create/migrate the database, `mix ecto.setup`
+5. Run the server, `mix phx.server`
+6. Connect, `http://localhost:4000`
+2.  
 
 ## Todo
 
-* secure db connection
-* test deployment
-* Show user's activity by week/month/etc
-* Show all activity by week/month/etc by user
-
-- Yellow  #ffd545
-- Purple  #fe4eb8
+* Show placeholder for days with no activities
+* Dashboard filters by time (Day, Week, Month, Year)
+* Dashboard graphs for activities
 
 # Notes
 
-## Timeline
-
-Contains `Post`s of activity
+- Yellow  #ffd545
+- Purple  #fe4eb8
 
 ## References
 
