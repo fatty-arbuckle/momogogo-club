@@ -18,6 +18,7 @@
 * Dashboard graphs for activities
 * "Success" of user edit always leaves you on edit
 * "Cancel" of user edit always takes you dashboard
+* Deleting an activity requires a refresh to see it removed
 
 # Notes
 

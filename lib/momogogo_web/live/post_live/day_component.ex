@@ -3,7 +3,12 @@ defmodule MomogogoWeb.PostLive.DayComponent do
 
   @impl true
   def update(%{posts: posts} = assigns, socket) do
-    total_steps = Enum.reduce(posts, 0, fn %{steps: steps}, acc -> acc + steps end)
+    total_steps = Enum.reduce(posts, 0, fn %{steps: steps}, acc ->
+      case steps do
+        nil -> acc
+        _ -> acc + steps 
+      end
+    end)
     {:ok,
      socket
      |> assign(assigns)

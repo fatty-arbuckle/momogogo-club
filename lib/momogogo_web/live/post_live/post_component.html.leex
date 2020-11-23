@@ -17,7 +17,9 @@
       <% end %>
     </div>
     <div class="column">
-      <span class="level-item is-size-7"><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
-      <span class="level-item is-size-7"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
+      <%= if @id != nil do %>
+        <span class="level-item is-size-7"><%= live_patch "Edit", to: Routes.post_index_path(@socket, :edit, @post) %></span>
+        <span class="level-item is-size-7"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: @post.id, data: [confirm: "Are you sure?"] %></span>
+      <% end %>
     </div>
   </div>
