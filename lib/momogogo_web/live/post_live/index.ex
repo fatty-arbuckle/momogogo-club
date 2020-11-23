@@ -77,15 +77,15 @@ defmodule MomogogoWeb.PostLive.Index do
       d = to_string(Date.add(oldest_date, x))
       if Enum.find(posts, fn %{ date: date } -> date == d end) == nil do
         %Momogogo.Timeline.Post{
-            activity: nil,
-            date: d,
-            duration: 0,
-            id: nil,
-            inserted_at: nil,
-            steps: nil,
-            updated_at: nil,
-            username: nil
-          }
+          activity: nil,
+          date: d,
+          duration: 0,
+          id: nil,
+          inserted_at: nil,
+          steps: nil,
+          updated_at: nil,
+          username: nil
+        }
       else
         nil
       end
