@@ -8,10 +8,17 @@
 4. Create/migrate the database, `mix ecto.setup`
 5. Run the server, `mix phx.server`
 6. Connect, `http://localhost:4000`
-2.  
+
+### Import example data
+
+1. Run the server with iex, `iex -S mix phx.server`
+2. Import the data generation code, `import_file("test/gen_data.exs")`
+3. Insert the data, `Data.Helper.create_test_data`
+
 
 ## Todo
 
+* Dashboard not sorted by steps
 * Configurable scale icons (as a user option)
 * Show placeholder for days with no activities
 * Dashboard filters by time (Day, Week, Month, Year)

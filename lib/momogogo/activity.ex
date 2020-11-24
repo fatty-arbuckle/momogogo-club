@@ -85,8 +85,8 @@ defmodule Momogogo.Activity do
     "Vacuuming" => %{ rate: 87 },
     "Volleyball" => %{ rate: 89 },
     "Walking, 2 mph" => %{ rate: 76, icon: "fa-walking" },
-    "Walking,3 mph" => %{ rate: 100, icon: "fa-walking" },
-    "Walking, 4.0 mph" => %{ rate: 152, icon: "fa-walking" },
+    "Walking, 3 mph" => %{ rate: 100, icon: "fa-walking" },
+    "Walking, 4 mph" => %{ rate: 152, icon: "fa-walking" },
     "Washing car" => %{ rate: 100 },
     "Water aerobics" => %{ rate: 89 },
     "Weight lifting" => %{ rate: 133, icon: "fa-dumbbell" },
@@ -97,7 +97,6 @@ defmodule Momogogo.Activity do
 
   def convert(activity, steps) when activity == @custom, do: steps
   def convert(activity, duration_in_minutes) do
-    IO.inspect(activity, label: "ACTIVITY")
     case Map.get(@conversion_table, activity) do
       %{ rate: rate } -> rate * duration_in_minutes
     end
