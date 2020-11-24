@@ -42,6 +42,10 @@ defmodule MomogogoWeb.DashboardLive do
           Map.put(acc, id, %{name: name, id: id, activities: a + 1, steps: s + steps})
       end
     end)
+    |> Enum.sort(fn {_, x}, {_, y} ->
+      x.steps > y.steps
+    end)
+    |> Enum.with_index
   end
 
 end

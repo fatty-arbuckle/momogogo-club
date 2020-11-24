@@ -7,7 +7,7 @@ defmodule MomogogoWeb.DashboardComponent do
     <tr class="<%= if @id == @current_user_id, do: "is-selected", else: "" %>">
       <td><%= @index %></td>
       <td class="has-text-left"><%= @data.name %></td>
-      <td><%= Momogogo.Helper.human_number(@data.steps) %></td>
+      <td class="has-test-right"><%= Momogogo.Helper.human_number(@data.steps) %></td>
     </tr>
     """
   end
