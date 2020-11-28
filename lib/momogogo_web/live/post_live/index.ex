@@ -12,7 +12,8 @@ defmodule MomogogoWeb.PostLive.Index do
       socket
       |> assign(:posts, list_posts(Integer.to_string(current_user_id), :fill_in_gaps))
       |> assign(:current_user_id, current_user_id)
-      |> assign(:current_user_email, current_user_email),
+      |> assign(:current_user_email, current_user_email)
+      |> assign(:step_scale, Momogogo.Timeline.get_preferences_by_user(current_user_id).step_scale),
       temporary_assigns: [posts: []]
     }
   end

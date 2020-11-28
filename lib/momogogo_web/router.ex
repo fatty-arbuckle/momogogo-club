@@ -41,6 +41,13 @@ defmodule MomogogoWeb.Router do
     live "/posts/:id/edit", PostLive.Index, :edit
     live "/posts/:id", PostLive.Show, :show
     live "/posts/:id/show/edit", PostLive.Show, :edit
+
+    # live "/preferences", PreferencesLive.Index, :index
+    # live "/preferences/new", PreferencesLive.Index, :new
+    # live "/preferences/:id/edit", PreferencesLive.Index, :edit
+
+    live "/preferences/:id", PreferencesLive.Show, :show
+    live "/preferences/:id/show/edit", PreferencesLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
@@ -65,7 +72,6 @@ defmodule MomogogoWeb.Router do
   end
 
   defp put_current_user(conn, _headers) do
-
     case Pow.Plug.current_user(conn) do
       %{ id: id, email: email } ->
         conn

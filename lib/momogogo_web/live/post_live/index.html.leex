@@ -23,7 +23,13 @@
         <% else %>
           <div id="posts">
             <%= for posts_for_date <- @posts do %>
-              <%= live_component @socket, MomogogoWeb.PostLive.DayComponent, id: Enum.at(posts_for_date, 0).date, date: Enum.at(posts_for_date, 0).date, posts: posts_for_date %>
+              <%= live_component @socket, MomogogoWeb.PostLive.DayComponent,
+                id: Enum.at(posts_for_date, 0).date,
+                date: Enum.at(posts_for_date, 0).date,
+                posts: posts_for_date,
+                current_user_id: @current_user_id,
+                step_scale: @step_scale
+              %>
             <% end %>
           </div>
         <% end %>

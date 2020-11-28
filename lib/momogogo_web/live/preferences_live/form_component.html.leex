@@ -1,0 +1,41 @@
+<section class="hero is-fullheight">
+  <div class="hero-header has-text-centered">
+    <a href="/dashboard">
+      <img src="/images/momogogo_logo-256.png" alt="Momogogo Logo">
+    </a>
+  </div>
+  <div class="hero-body has-normal-items">
+    <div class="container has-text-centered">
+
+      <h2><%= @title %></h2>
+
+      <%= f = form_for @changeset, "#",
+        id: "preferences-form",
+        phx_target: @myself,
+        phx_change: "validate",
+        phx_submit: "save" %>
+
+
+        <div class="field">
+          <%= label f, :step_scale %>
+          <div class="control">
+            <%= text_input f, :step_scale, class: "input has-width-half" %>
+          </div>
+          <%= error_tag f, :step_scale %>
+        </div>
+
+
+        <div class="has-text-centered">
+          <%= submit "Update", phx_disable_with: "Updating...", class: "button is-text is-large" %>
+        </div>
+
+        <div class="has-text-centered">
+          <%= link "Cancel", to: Routes.dashboard_path(@socket, :index), class: "button is-text is-large" %>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+</section>

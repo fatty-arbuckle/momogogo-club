@@ -1,0 +1,39 @@
+<section class="hero is-fullheight">
+  <div class="hero-header has-text-centered">
+  <div class="hero-body has-normal-items">
+    <div class="container">
+
+      <%= if @live_action in [:edit] do %>
+        <%= live_modal @socket, MomogogoWeb.PreferencesLive.FormComponent,
+          id: @preferences.id,
+          title: @page_title,
+          action: @live_action,
+          preferences: @preferences,
+          return_to: Routes.preferences_show_path(@socket, :show, @preferences) %>
+      <% end %>
+
+      <div class="has-text-centered">
+        <div class="button is-text is-large"><%= link "Go To Timeline", to: Routes.post_index_path(@socket, :index) %></div>
+      </div>
+
+      <p class="is-size-1">
+        Preferences
+      </p>
+
+
+      <ul>
+
+        <li>
+          <strong>Step scale:</strong>
+          <%= @preferences.step_scale %>
+        </li>
+
+      </ul>
+
+      <span><%= live_patch "Edit", to: Routes.preferences_show_path(@socket, :edit, @preferences), class: "button" %></span>
+      <span><%= live_redirect "Back", to: Routes.dashboard_path(@socket, :index) %></span>
+
+
+    </div>
+  </div>
+</section>
