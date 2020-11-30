@@ -23,7 +23,7 @@
         </div>
 
         <div class="field">
-          <%= label f, :password %>
+          <%= label f, :password, class: "label" %>
           <div class="control">
             <%= password_input f, :password, class: "input has-width-half" %>
           </div>

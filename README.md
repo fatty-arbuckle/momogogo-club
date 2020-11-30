@@ -18,8 +18,6 @@
 
 ## Todo
 
-* Configurable scale selection needs a drop down, not text field
-
 * Dashboard filters by time (Day, Week, Month, Year)
 * Dashboard graphs for activities
 * "Success" of user edit always leaves you on edit

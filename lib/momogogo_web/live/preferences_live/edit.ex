@@ -68,4 +68,7 @@ defmodule MomogogoWeb.PreferencesLive.Edit do
     end
   end
 
+  defp human_scale(scale) do
+    String.upcase(scale)
+  end
 end

@@ -11,9 +11,12 @@
 
 
         <div class="field">
-          <%= label f, :step_scale %>
+          <%= label f, :step_scale, class: "label" %>
           <div class="control">
-            <%= text_input f, :step_scale, class: "input has-width-half" %>
+            <%= select f, :step_scale, [
+                "Default": "default",
+                "Snarky": "snarky"
+              ], class: "input has-width-half" %>
           </div>
           <%= error_tag f, :step_scale %>
         </div>

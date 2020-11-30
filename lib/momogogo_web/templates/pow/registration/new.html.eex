@@ -15,7 +15,7 @@
         <% end %>
 
         <div class="field">
-          <%= label f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+          <%= label f, Pow.Ecto.Schema.user_id_field(@changeset), class: "label" %>
           <div class="control">
             <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), class: "input has-width-half" %>
           </div>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="field">
-          <%= label f, :name %>
+          <%= label f, :name, class: "label" %>
           <div class="control">
             <%= text_input f, :name, class: "input has-width-half" %>
           </div>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="field">
-          <%= label f, :password %>
+          <%= label f, :password, class: "label" %>
           <div class="control">
             <%= password_input f, :password, class: "input has-width-half" %>
           </div>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="field">
-          <%= label f, :password_confirmation %>
+          <%= label f, :password_confirmation, class: "label" %>
           <div class="control">
             <%= password_input f, :password_confirmation, class: "input has-width-half" %>
           </div>

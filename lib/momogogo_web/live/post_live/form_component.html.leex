@@ -7,7 +7,7 @@
     phx_submit: "save" %>
 
     <div class="field">
-      <%= label f, :date %>
+      <%= label f, :date, class: "label" %>
       <div class="control">
         <%= date_input f, :date, class: "input has-width-half" %>
       </div>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="field">
-      <%= label f, :activity %>
+      <%= label f, :activity, class: "label" %>
       <div class="control">
         <%= select f, :activity, @activities, prompt: "What did you do?", class: "input has-width-half" %>
       </div>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="field">
-      <%= label f, :duration, @value_label %>
+      <%= label f, :duration, @value_label, class: "label" %>
       <div class="control">
         <%= text_input f, :duration, class: "input has-width-half" %>
       </div>
