@@ -18,6 +18,7 @@
         <div class="hero m-3">
           <!-- Main container -->
           <nav class="level">
+
             <!-- Left side -->
             <div class="level-left">
               <div class="level-item">
@@ -27,31 +28,44 @@
                   </a>
                 </figure>
               </div>
+              <div class="is-size-3 level-item">
+                <%= Momogogo.Helper.email_or_name(@current_user.email, @current_user.name) %>
+              </div>
             </div>
+
             <!-- Right side -->
             <div class="level-right">
               <div class="level-item">
 
-                <div class="is-size-5 level-item">
-                  <%= Momogogo.Helper.email_or_name(@current_user.email, @current_user.name) %>
+                <div class="is-size-3 level-item">
+                  <%= link to: Routes.dashboard_path(@conn, :index) do %>
+                    <i class="fas fa-chart-line"></i>
+                  <% end %>
+                </div>
+                <div class="is-size-3 level-item">
+                  <%= link to: Routes.post_index_path(@conn, :index) do %>
+                    <i class="fas fa-calendar-alt"></i>
+                  <% end %>
                 </div>
                 <div class="is-size-3 level-item">
                   <%= link to: Routes.pow_registration_path(@conn, :edit) do %>
-                    <i class="tooltip fas fa-user %>"></i>
+                    <i class="fas fa-user"></i>
                   <% end %>
                 </div>
                 <div class="is-size-3 level-item">
                   <%= link to: Routes.preferences_show_path(@conn, :edit, Momogogo.Timeline.get_preferences_id_for_user(@current_user.id)) do %>
-                    <i class="tooltip fas fa-cog %>"></i>
+                    <i class="fas fa-cog"></i>
                   <% end %>
                 </div>
                 <div class="is-size-3 level-item">
                   <%= link to: Routes.pow_session_path(@conn, :delete), method: :delete do %>
-                    <i class="tooltip fas fa-sign-out-alt %>"></i>
+                    <i class="fas fa-sign-out-alt"></i>
                   <% end %>
                 </div>
+
               </div>
-            </div>
+            </div><!-- level-right -->
+
           </nav>
         </div>
       <% end %>

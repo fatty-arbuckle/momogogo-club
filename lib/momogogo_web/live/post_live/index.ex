@@ -29,10 +29,10 @@ defmodule MomogogoWeb.PostLive.Index do
     |> assign(:post, Timeline.get_post!(id))
   end
 
-  defp apply_action(socket, :new, _params) do
+  defp apply_action(socket, :new, %{"date" => date}) do
     socket
     |> assign(:page_title, "New Post")
-    |> assign(:post, %Post{})
+    |> assign(:post, %Post{date: date})
   end
 
   defp apply_action(socket, :index, _params) do
