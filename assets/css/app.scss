@@ -20,6 +20,12 @@ body, html {
   background-attachment: fixed;
 }
 
+.has-shade-revo {
+  background: rgb(255,213,69);
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
 .has-shade {
   background: rgb(255,213,69);
   background: radial-gradient(circle, rgba(255,213,69,1) 0%, rgba(255,213,69,0) 100%);
