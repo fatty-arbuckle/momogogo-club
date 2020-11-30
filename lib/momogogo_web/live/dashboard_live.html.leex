@@ -3,6 +3,21 @@
   <div class="hero-body has-normal-items">
     <div class="container">
 
+      <div>
+        <span class="tabs is-right is-pulled-right">
+          <ul>
+            <li phx-click="limit_day" class="<%= @limit_day_class %>"><a>Day</a></li>
+            <li phx-click="limit_week" class="<%= @limit_week_class %>"><a>Week</a></li>
+            <li phx-click="limit_month" class="<%= @limit_month_class %>"><a>Month</a></li>
+            <li phx-click="limit_year" class="<%= @limit_year_class %>"><a>Year</a></li>
+          </ul>
+        </span>
+
+        <!-- <span class="is-size-5 is-shaded is-vcentered is-pulled-left">
+          <span>< @start_date ></span> - <span>< @end_date ></span>
+        </span> -->
+      </div>
+
       <table class="table is-fullwidth is-size-3 has-text-weight-light">
         <tbody>
           <%= for {{ _id, data }, idx} <- @user_data do %>

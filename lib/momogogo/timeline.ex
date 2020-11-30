@@ -23,9 +23,10 @@ defmodule Momogogo.Timeline do
       [%Post{}, ...]
 
   """
-  def list_posts(:all) do
+  def list_posts(:all, s, e) do
     Repo.all(
       from p in Post,
+      where: p.date >= ^s and p.date <= ^e,
       order_by: [desc: p.date]
     )
   end
