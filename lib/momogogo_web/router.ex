@@ -43,13 +43,6 @@ defmodule MomogogoWeb.Router do
     live "/posts/:id/show/edit", PostLive.Show, :edit
 
     live "/preferences/edit", PreferencesLive.Edit, :edit
-
-    # live "/preferences", PreferencesLive.Index, :index
-    # live "/preferences/new", PreferencesLive.Index, :new
-    # live "/preferences/:id/edit", PreferencesLive.Index, :edit
-
-    # live "/preferences/:id", PreferencesLive.Show, :show
-    # live "/preferences/:id/show/edit", PreferencesLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
