@@ -18,6 +18,7 @@
 
 ## Todo
 
+* Preferences should look like users
 * Configurable scale selection needs a drop down, not text field
 
 * Dashboard filters by time (Day, Week, Month, Year)

@@ -53,7 +53,7 @@
                   <% end %>
                 </div>
                 <div class="is-size-3 level-item">
-                  <%= link to: Routes.preferences_show_path(@conn, :edit, Momogogo.Timeline.get_preferences_id_for_user(@current_user.id)) do %>
+                  <%= link to: Routes.preferences_edit_path(@conn, :edit) do %>
                     <i class="fas fa-cog"></i>
                   <% end %>
                 </div>
