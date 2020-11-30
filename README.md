@@ -18,6 +18,9 @@
 
 ## Todo
 
+* Chat
+* invitations required for signup (ie, remove registration link)
+* pagination on activities
 * Dashboard filters by time (Day, Week, Month, Year)
 * Dashboard graphs for activities
 * "Success" of user edit always leaves you on edit
